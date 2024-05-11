@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Meta tag para definir o conjunto de caracteres usado na página -->
+    <meta charset="UTF-8">
+    <!-- Título da página -->
+    <title>Cadastro de Chamados</title>
+    <!-- Estilos CSS para a página -->
+    <style>
+        /* Estilo para o corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        /* Contêiner principal para o formulário */
+       .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra suave ao redor do contêiner */
+        }
+        /* Estilo para o título do formulário */
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Estilo para os rótulos dos campos */
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        /* Estilo para os campos de texto e área de texto */
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Bordas arredondadas e cor da borda */
+        }
+        textarea {
+            resize: vertical; /* Permite redimensionar verticalmente a área de texto */
+        }
+        /* Estilo para o campo de arquivo */
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        /* Estilo para os botões */
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+        button:hover {
+            background-color: #0056b3; /* Cor de fundo ao passar o mouse sobre o botão */
+        }
+    </style>
+    <!-- Script JavaScript para funcionalidades adicionais -->
+    <script>
+        function closeForm() {
+            // Seleciona o contêiner do formulário
+            var formContainer = document.querySelector('.container');
+            
+            // Oculta o contêiner do formulário
+            formContainer.style.display = 'none';
+            
+            // Exibe uma mensagem de alerta
+            alert("Formulário fechado.");
+        }
+    </script>
+
+<script>
+    function closeForm() {
+        // Exibe uma mensagem de alerta
+        alert("Formulário fechado.");
+        
+        // Tenta fechar a janela atual
+        if (window.self!== window.top) {
+            window.top.close();
+        } else {
+            // Se não for possível fechar a janela, oculta o formulário
+            var formContainer = document.querySelector('.container');
+            formContainer.style.display = 'none';
+        }
+    }
+</script>
+
+</head>
+<body>
+
+<!-- Contêiner principal para o formulário -->
+<div class="container">
+    <!-- Título do formulário -->
+    <h2>Cadastro de Chamados</h2>
+    <!-- Formulário para cadastro de chamados -->
+    <form action="/submit_chamado" method="post" enctype="multipart/form-data">
+        <!-- Campo para o solicitante -->
+        <label for="solicitante">Solicitante:</label><br>
+        <input type="text" id="solicitante" name="solicitante"><br>
+        <!-- Campo para o nome -->
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome"><br>
+        <!-- Campo para o problema -->
+        <label for="problema">Problema:</label><br>
+        <textarea id="problema" name="problema"></textarea><br>
+        <!-- Campo para o anexo -->
+        <label for="anexo">Anexo:</label><br>
+        <input type="file" id="anexo" name="anexo"><br>
+        <!-- Botão para enviar o formulário -->
+        <button type="submit">Criar</button>
+        <!-- Botão para fechar o formulário -->
+        <button type="button" onclick="closeForm()">Fechar</button>
+    </form>
+</div>
+
+</body>
+</html>
